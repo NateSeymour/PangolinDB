@@ -13,12 +13,12 @@ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
 # libpdb
-add_library(pdb SHARED src/dummy.cpp)
+add_library(pdb SHARED src/dummy.cpp src/Schema.h)
 
 # Testing
 enable_testing()
 
-add_executable(pdb_test)
+add_executable(pdb_test test/schema/schema.test.cpp)
 target_link_libraries(pdb_test GTest::gtest_main pdb)
 
 include(GoogleTest)
